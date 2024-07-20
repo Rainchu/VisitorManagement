@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var message = ViewBag.Message as string;
+  
+}
+
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/admin.js"></script>
+@* <script>
+    $(document).ready(function () {
+        var message = '@message';
+        if (message === '') {
+            window.location.href = '@Url.Action("LogIn", "LogIn")'; // Redirect to login page
+        }
+    });
+</script> *@
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div>
+    
+        
+    </div>
+}
+else
+{
+    <div>
+       
+        <div id="model_dialog" style="display:none">
+            <h4>This is rohit dialog box</h4>
+        </div>
+
+        <div id="meet" class="bg-gray">
+        </div>
+    </div>
+}
