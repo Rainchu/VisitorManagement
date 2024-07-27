@@ -9,8 +9,13 @@ namespace VisitorManagement.Controllers
     {
         public IActionResult LogIn()
         {
+            ViewBag.Messsage = HttpContext.Session.GetString("user");
             return View();
         }
+
+
+       
+
 
         public IActionResult LogOut()
         {
@@ -23,13 +28,7 @@ namespace VisitorManagement.Controllers
             return View();
         }
 
-        public IActionResult AddAdmins()
-        {
-
-            ViewBag.Message = HttpContext.Session.GetString("user");
-
-            return View();
-        }
+       
 
         public JsonResult getDesignation()
         {
@@ -102,6 +101,9 @@ namespace VisitorManagement.Controllers
         {
             Dictionary<string,string> dic = new Dictionary<string,string>();
             dic["Message"] = "";
+            dic["id"] = "";
+            dic["username"] = "";
+            dic["email"] = "";
             try
             {
                 string[,] param = new string[,]
@@ -115,9 +117,16 @@ namespace VisitorManagement.Controllers
                 if(dt.Rows.Count > 0)
                 {
                     dic["Message"] = dt.Rows[0]["IS_USER"].ToString();
+                    dic["id"] = dt.Rows[0]["USERID"].ToString();
+                    dic["username"] = dt.Rows[0]["USERNAME"].ToString();
+                    dic["email"] = dt.Rows[0]["EMAIL"].ToString();
                 }
 
                 HttpContext.Session.SetString("user", dic["Message"]);
+                HttpContext.Session.SetString("id",dic["id"]);
+                HttpContext.Session.SetString("name", dic["username"]);
+                HttpContext.Session.SetString("email",dic["email"]);
+
 
             }catch(Exception ex)
             {

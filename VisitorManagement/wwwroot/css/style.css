@@ -7,3 +7,16 @@
     
 */
 }
+
+.nt{
+    background-image : url('../asset/nature.jpg');
+    width : 100%;
+    height :100%;
+    background-repeat : no-repeat;
+}
+
+.card-disabled {
+    opacity: 0.4;
+    pointer-events: none; /* Disable all interactions */
+    cursor:no-drop;
+}

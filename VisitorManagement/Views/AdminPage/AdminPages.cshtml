@@ -6,39 +6,63 @@
   
 }
 
-<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+<link href="https://code.jquery.com/ui/3.4.1/themes/ui-lightness/jquery-ui.css"
       rel="stylesheet">
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
+<script src="https://code.jquery.com/ui/3.4.1/jquery-ui.js"></script>
 
+<link href="~/css/style.css" rel="stylesheet" />
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/admin.js"></script>
-@* <script>
-    $(document).ready(function () {
-        var message = '@message';
-        if (message === '') {
-            window.location.href = '@Url.Action("LogIn", "LogIn")'; // Redirect to login page
-        }
-    });
-</script> *@
 
-@if (!string.IsNullOrEmpty(ViewBag.Message))
+@if (!string.IsNullOrEmpty(@ViewBag.Id) && (string)@ViewBag.Message == "ADMIN")
 {
-    <div>
-    
-        
+
+    <div class="container-fluid">
+
+
+        <div  class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="model_dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+        <h4 class="modal-title fs-5" id="exampleModalLabel">Send Email</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+            <div class="card">
+                
+
+                <div class="card-body">
+
+                    <div>
+                        <label for="subject" class="form-label">Enter Subject</label>
+                        <input type="text" class="form-control" id="subject">
+                    </div>
+                    <div>
+                        <label for="body" class="form-label">Enter Body</label>
+                        <textarea type="text" class="form-control" id="body" rows='2' cols='30'></textarea>
+                    </div>
+
+                    <div class="mt-4">
+                        <button class="btn btn-outline-success" type="submit" id="send" data-bs-dismiss="modal" aria-label="Close">Send</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-success">All Meeting Request.....</h4>
+        <div id="meet" class="bg-gray bg-primary-subtle">
+
+        </div>
     </div>
 }
 else
 {
-    <div>
-       
-        <div id="model_dialog" style="display:none">
-            <h4>This is rohit dialog box</h4>
-        </div>
-
-        <div id="meet" class="bg-gray">
-        </div>
-    </div>
+    <script>
+ $(document).ready(function () {
+        
+            window.location.href = '@Url.Action("LogIn", "LogIn")'; // Redirect to login page
+        
+    });
+    </script>
 }

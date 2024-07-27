@@ -4,44 +4,75 @@
 @{
    
 }
+<link href="~/css/visitor.css" rel="stylesheet" />
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/visitor.js"></script>
-<div class="mt-3">
 
-    <div class="card col-md-4 offset-4">
-        <div class="card-header">
-            <h4>Enter Visitor Details</h4>
+@if (!string.IsNullOrEmpty(@ViewBag.Id) && (string)@ViewBag.Message == "VISITOR")
+{
+
+    <div class="mt-3">
+
+        <div class="card col-md-4 offset-4">
+            <div class="card-header">
+                <h3>@ViewBag.Name</h3>
+                <h4>Enter Visitor Details</h4>
+
+            </div>
+
+            <div class="card-body">
+                <div >
+                    <label for="name" class="form-label">Enter Name</label>
+                    <input type="text" class="form-control" id="name" >
+                </div>
+
+                <div>
+                    <label for="orgname" class="form-label">Enter Organization</label>
+                    <input type="text" class="form-control" id="orgname">
+                </div>
+
+                <div >
+                    <label for="email" class="form-label">Enter Email</label>
+                    <input type="email" class="form-control" id="email" >
+                </div>
+                <div>
+                    <label for="mobile" class="form-label">Enter Phone</label>
+                    <input type="text" class="form-control" id="mobile">
+                </div>
+
+                <div>
+                    <label for="date" class="form-label">Enter Date</label>
+                    <input type="date" class="form-control" id="date">
+                </div>
+
+                  <div>
+                    <label for="time" class="form-label">Enter Time</label>
+                    <input type="time" class="form-control" id="time" value="09:00">
+                </div>
+
+                <div>
+                    <label for="about" class="form-label">Enter About</label>
+                    <textarea type="text" class="form-control" id="about"></textarea>
+                </div>
+
+                <div id="person" class="mt-4">
+
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-outline-success" type="submit" id="saveVisit">Submit</button>
+                </div>
+
+            </div>
+
         </div>
-
-        <div class="card-body">
-            <div >
-                <label for="name" class="form-label">Enter Name</label>
-                <input type="text" class="form-control" id="name" >
-            </div>
-
-            <div>
-                <label for="orgname" class="form-label">Enter Organization</label>
-                <input type="text" class="form-control" id="orgname">
-            </div>
-
-            <div >
-                <label for="email" class="form-label">Enter Email</label>
-                <input type="email" class="form-control" id="email" >
-            </div>
-            <div>
-                <label for="mobile" class="form-label">Enter Phone</label>
-                <input type="text" class="form-control" id="mobile">
-            </div>
-
-            <div id="person">
-
-            </div>
-
-            <div class="mt-4">
-                <button class="btn btn-outline-success" type="submit">Submit</button>
-            </div>
-
-        </div>
-
     </div>
-</div>
+}
+else
+{
+    <script>
+        document.ready(function () {
+            window.location.href = '@Url.Action("LogIn","LogIn")'
+        });
+    </script>
+}

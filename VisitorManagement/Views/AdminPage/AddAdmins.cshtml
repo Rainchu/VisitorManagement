@@ -10,19 +10,9 @@
 <script src="~/js/login.js"></script>
 
 
-<script>
-    $(document).ready(function () {
-        var message = '@message';
-        if (message === '') {
-            window.location.href = '@Url.Action("LogIn", "LogIn")'; // Redirect to login page
-        }
-    });
-</script>
 
-@if (!string.IsNullOrEmpty(ViewBag.Message))
+@if (!string.IsNullOrEmpty(@ViewBag.Id) && (string)@ViewBag.Message == "ADMIN")
 {
-    
-
     <div class="mt-3">
 
         <div class="card col-md-4 offset-4">
@@ -70,4 +60,12 @@
 
         </div>
     </div>
+}else{
+      <script>
+ $(document).ready(function () {
+        
+            window.location.href = '@Url.Action("LogIn", "LogIn")'; // Redirect to login page
+        
+    });
+    </script>
 }

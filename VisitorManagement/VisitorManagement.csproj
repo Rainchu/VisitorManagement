@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\LogIn\LogOut.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\visitor.css" />
   </ItemGroup>
 
   <ItemGroup>

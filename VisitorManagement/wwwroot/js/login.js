@@ -22,7 +22,7 @@ function getDesignation() {
 
             $("#designation").html(data.Message)
 
-            alert(data.Message)
+         
         }
     })
 }
@@ -44,24 +44,26 @@ function addAdmin() {
     )
 
 }
+function logIn() {
 
-function logIn(){
+    console.log("io")
 
     $.post("getVerifyUser", {
         email: $("#email").val(),
         password: $("#password").val()
     },
-
         function (data) {
+            console.log(data.Message);
             if (data.Message != "") {
-                alert(data.Message)
-                console.log(data.Message)
-                window.location = "/AdminPage/AdminPages";
+                if (data.Message == "ADMIN") {
+                    window.location = "/AdminPage/AdminPages";
+                } else if (data.Message == "VISITOR") {
+                    window.location = "/Visitor/VisitorHome ";
+                } else {
+                    window.location = "/Recep/Recept";
+                }
             }
-        }
-
-    )
-
+        });
 }
 
 
